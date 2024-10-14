@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document("ac")
+@Document("AC")
 public class AC {
     @Id
     private String id;
@@ -16,7 +16,7 @@ public class AC {
     private String manufacturer;
     private String classGrade;
     private String refAgent;
-    private String hotPowerOut;
-    private String coldPowerOut;
+    private int hotPowerOut;
+    private int coldPowerOut;
 
 }

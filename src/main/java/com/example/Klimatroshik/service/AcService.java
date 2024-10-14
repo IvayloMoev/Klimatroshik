@@ -1,7 +1,8 @@
 package com.example.Klimatroshik.service;
 
+import com.example.Klimatroshik.model.dto.AcDto;
 import com.example.Klimatroshik.model.entitiy.AC;
-import com.example.Klimatroshik.response.AcRepository;
+import com.example.Klimatroshik.repository.AcRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,11 +26,28 @@ public class AcService {
             if (ac.isPresent()) {
                 return ac.get();
             } else {
-                throw new Exception("AC not found!");
+                throw new RuntimeException("AC not found!");
             }
         }catch (Exception e) {
             System.err.println(e.getMessage());
             return null;
         }
+    }
+
+    public boolean addAC(AcDto dto){
+        try {
+            AC ac = new AC();
+            ac.setModel(dto.getModel());
+            ac.setManufacturer(dto.getManufacturer());
+            ac.setRefAgent(dto.getRefAgent());
+            ac.setClassGrade(dto.getClassGrade());
+            ac.setHotPowerOut(dto.getPower().getHotOut());
+            ac.setColdPowerOut(dto.getPower().getColdOut());
+            AC savedAc = acRepository.save(ac);
+            return true;
+        }catch(Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+
     }
 }
