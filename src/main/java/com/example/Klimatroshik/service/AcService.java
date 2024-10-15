@@ -50,4 +50,13 @@ public class AcService {
         }
 
     }
+
+    public boolean deleteAc(String id){
+       try {
+           acRepository.deleteById(id);
+           return true;
+       }catch (Exception e){
+           throw new RuntimeException(e.getMessage());
+       }
+    }
 }

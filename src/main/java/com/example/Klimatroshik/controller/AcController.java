@@ -35,10 +35,30 @@ public class AcController {
         Map<String,Boolean> body = new HashMap<>();
         body.put("Created", result);
         if(result){
-            return new ResponseEntity<>(body, HttpStatus.CREATED);
+            return new ResponseEntity<>(body, HttpStatus.OK);
         }
         return new ResponseEntity<>(body, HttpStatus.CONFLICT);
     }
 
+    @GetMapping("/findId")
+    public ResponseEntity<Map<String, AC>> findById(@RequestParam String id){
+        AC ac = acService.getACById(id);
+        Map<String, AC> body = new HashMap<>();
+        body.put("AC: ", ac);
+        if(ac != null){
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity<Map<String, Boolean>> deleteAc(@RequestParam String id){
+        boolean isDeleted = acService.deleteAc(id);
+        Map<String, Boolean> body = new HashMap<>();
+        body.put("AC: ", isDeleted);
+        if(isDeleted){
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
 
 }

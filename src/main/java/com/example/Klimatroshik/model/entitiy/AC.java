@@ -2,8 +2,10 @@ package com.example.Klimatroshik.model.entitiy;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Getter
 @Setter
@@ -12,6 +14,7 @@ public class AC {
     @Id
     private String id;
 
+//    private int customId;
     private String model;
     private String manufacturer;
     private String classGrade;
