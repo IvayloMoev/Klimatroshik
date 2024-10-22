@@ -14,7 +14,7 @@ public class AC {
     @Id
     private String id;
 
-//    private int customId;
+//    private Long customId;
     private String model;
     private String manufacturer;
     private String classGrade;

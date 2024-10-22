@@ -25,4 +25,5 @@ public class AcDto {
     @JsonProperty("Log")
     private LogDto log;
 
+
 }
